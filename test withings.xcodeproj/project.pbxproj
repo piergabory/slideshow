@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		86A5346327A573B0007DF096 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5346227A573B0007DF096 /* AppDelegate.swift */; };
 		86A5346527A573B0007DF096 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5346427A573B0007DF096 /* SceneDelegate.swift */; };
-		86A5346727A573B0007DF096 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5346627A573B0007DF096 /* ViewController.swift */; };
+		86A5346727A573B0007DF096 /* ImageSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5346627A573B0007DF096 /* ImageSearchViewController.swift */; };
 		86A5346A27A573B0007DF096 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86A5346827A573B0007DF096 /* Main.storyboard */; };
 		86A5346C27A573B1007DF096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86A5346B27A573B1007DF096 /* Assets.xcassets */; };
 		86A5346F27A573B1007DF096 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86A5346D27A573B1007DF096 /* LaunchScreen.storyboard */; };
+		86A5347727A574C0007DF096 /* ImageSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5347627A574C0007DF096 /* ImageSearchCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		86A5345F27A573B0007DF096 /* test withings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test withings.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86A5346227A573B0007DF096 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86A5346427A573B0007DF096 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		86A5346627A573B0007DF096 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		86A5346627A573B0007DF096 /* ImageSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchViewController.swift; sourceTree = "<group>"; };
 		86A5346927A573B0007DF096 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		86A5346B27A573B1007DF096 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86A5346E27A573B1007DF096 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86A5347027A573B1007DF096 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86A5347627A574C0007DF096 /* ImageSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,8 @@
 			children = (
 				86A5346227A573B0007DF096 /* AppDelegate.swift */,
 				86A5346427A573B0007DF096 /* SceneDelegate.swift */,
-				86A5346627A573B0007DF096 /* ViewController.swift */,
+				86A5346627A573B0007DF096 /* ImageSearchViewController.swift */,
+				86A5347627A574C0007DF096 /* ImageSearchCell.swift */,
 				86A5346827A573B0007DF096 /* Main.storyboard */,
 				86A5346B27A573B1007DF096 /* Assets.xcassets */,
 				86A5346D27A573B1007DF096 /* LaunchScreen.storyboard */,
@@ -138,7 +141,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86A5346727A573B0007DF096 /* ViewController.swift in Sources */,
+				86A5346727A573B0007DF096 /* ImageSearchViewController.swift in Sources */,
+				86A5347727A574C0007DF096 /* ImageSearchCell.swift in Sources */,
 				86A5346327A573B0007DF096 /* AppDelegate.swift in Sources */,
 				86A5346527A573B0007DF096 /* SceneDelegate.swift in Sources */,
 			);
@@ -302,7 +306,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.piergabory.test-withings";
+				PRODUCT_BUNDLE_IDENTIFIER = com.piergabory.wwithings;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -330,7 +334,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.piergabory.test-withings";
+				PRODUCT_BUNDLE_IDENTIFIER = com.piergabory.wwithings;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
