@@ -101,14 +101,34 @@
                     <view key="view" contentMode="scaleToFill" id="SBn-mD-fqz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8KV-e9-COT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Odm-NY-zM3">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="FxR-5R-1Gn"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8KV-e9-COT" firstAttribute="leading" secondItem="FxR-5R-1Gn" secondAttribute="leading" id="17e-2D-VXl"/>
+                            <constraint firstItem="8KV-e9-COT" firstAttribute="trailing" secondItem="FxR-5R-1Gn" secondAttribute="trailing" id="9Lj-rE-XZ3"/>
+                            <constraint firstItem="8KV-e9-COT" firstAttribute="top" secondItem="SBn-mD-fqz" secondAttribute="top" id="Dqh-Fi-aQK"/>
+                            <constraint firstItem="Odm-NY-zM3" firstAttribute="centerX" secondItem="SBn-mD-fqz" secondAttribute="centerX" id="dOs-ZB-cdy"/>
+                            <constraint firstItem="Odm-NY-zM3" firstAttribute="centerY" secondItem="SBn-mD-fqz" secondAttribute="centerY" id="dlY-mC-T8f"/>
+                            <constraint firstAttribute="bottom" secondItem="8KV-e9-COT" secondAttribute="bottom" id="k3r-as-utv"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Drq-VY-Kxq"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Odm-NY-zM3" id="2Or-nZ-15X"/>
+                        <outlet property="imageView" destination="8KV-e9-COT" id="NfZ-h1-a2J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MkU-yV-D3D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="154" y="100"/>
+            <point key="canvasLocation" x="153.62318840579712" y="99.776785714285708"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YRG-ix-Z42">

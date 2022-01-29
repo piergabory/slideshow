@@ -10,6 +10,7 @@ import UIKit
 struct Response: Decodable {
     struct Hit: Decodable {
         let previewURL: URL
+        let largeImageURL: URL
     }
     
     let hits: [Hit]
@@ -24,21 +25,20 @@ class ImageSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.reloadData()
-        collectionView.allowsMultipleSelection = true
         fetchImagesUrls()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
-            let slideshow = segue.destination as? SlideshowViewController,
-            let items = collectionView.indexPathsForSelectedItems?.map({ results[$0.item].previewURL })
-        else {
-            return
-        }
-        slideshow.urls = items
+            let slideshow = segue.destination as? SlideshowViewController
+        else { return }
+        slideshow.urls = collectionView.indexPathsForSelectedItems?.map({ results[$0.item].largeImageURL }) ?? []
     }
     
     @IBAction private func fetchImagesUrls(search: UITextField? = nil) {
+        // clean selection
+        collectionView.allowsMultipleSelection = false
+        collectionView.allowsMultipleSelection = true
         updateNextButton()
         guard
             let request = URL(string: "https://pixabay.com/api/?key=18021445-326cf5bcd3658777a9d22df6f&q=\(search?.text ?? "")")
@@ -48,9 +48,10 @@ class ImageSearchViewController: UIViewController {
                 if let error = error {
                     throw error
                 }
-                guard let data = data else {
-                    throw NSError()
-                }
+                guard
+                    let data = data
+                else { throw NSError() }
+
                 let results = try JSONDecoder().decode(Response.self, from: data).hits
                 DispatchQueue.main.async { [weak self] in
                     self?.results = results
