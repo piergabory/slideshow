@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		864D08F527A7072A0099FD6C /* PaginatedImageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D08F427A7072A0099FD6C /* PaginatedImageSearch.swift */; };
 		86A5346327A573B0007DF096 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5346227A573B0007DF096 /* AppDelegate.swift */; };
 		86A5346527A573B0007DF096 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5346427A573B0007DF096 /* SceneDelegate.swift */; };
 		86A5346727A573B0007DF096 /* ImageSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5346627A573B0007DF096 /* ImageSearchViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		864D08F427A7072A0099FD6C /* PaginatedImageSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedImageSearch.swift; sourceTree = "<group>"; };
 		86A5345F27A573B0007DF096 /* test withings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test withings.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86A5346227A573B0007DF096 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86A5346427A573B0007DF096 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				86A5347A27A6F59A007DF096 /* PixabayAPI.swift */,
+				864D08F427A7072A0099FD6C /* PaginatedImageSearch.swift */,
 				86A5347E27A6FBDF007DF096 /* ImageFetcher.swift */,
 			);
 			path = API;
@@ -169,6 +172,7 @@
 				86A5346727A573B0007DF096 /* ImageSearchViewController.swift in Sources */,
 				86A5347727A574C0007DF096 /* ImageSearchCell.swift in Sources */,
 				86A5346327A573B0007DF096 /* AppDelegate.swift in Sources */,
+				864D08F527A7072A0099FD6C /* PaginatedImageSearch.swift in Sources */,
 				86A5347927A57DF0007DF096 /* SlideshowViewController.swift in Sources */,
 				86A5347F27A6FBDF007DF096 /* ImageFetcher.swift in Sources */,
 				86A5346527A573B0007DF096 /* SceneDelegate.swift in Sources */,

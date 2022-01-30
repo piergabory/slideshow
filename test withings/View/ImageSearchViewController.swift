@@ -11,36 +11,38 @@ class ImageSearchViewController: UIViewController {
     
     private let selectedColor = UIColor.blue
     private let deselectedColor = UIColor.white
-    private let api = PixabayAPI()
-    private var results: [PixabayAPI.Response.Hit] = [] { didSet { collectionView.reloadData() } }
+    private lazy var paginatedSearch = PaginatedImageSearch(update)
     
     @IBOutlet private var collectionView: UICollectionView!
-    @IBOutlet private var nextButton: UIBarButtonItem!
+    @IBOutlet private var nextButton: UIButton!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        collectionView.reloadData()
-        fetchImagesUrls()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        search(nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let slideshow = segue.destination as? SlideshowViewController {
             let urls = collectionView.indexPathsForSelectedItems?.map {
-                results[$0.item].largeImageURL
+                paginatedSearch.result[$0.section][$0.item].largeImageURL
             }
             slideshow.urls = urls ?? []
         }
     }
     
-    @IBAction private func fetchImagesUrls(search: UITextField? = nil) {
+    @IBAction private func search(_ search: UITextField? = nil) {
         clearSelection()
-        api.searchImages(search?.text) { [weak self] hits in
-            DispatchQueue.main.async {
-                self?.results = hits
-            }
-        }
+        paginatedSearch = PaginatedImageSearch(search: search?.text, update)
+        paginatedSearch.loadNextPage()
+        collectionView.reloadData()
     }
     
+    private func update() {
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+        }
+    }
+
     private func clearSelection() {
         collectionView.allowsMultipleSelection = false
         collectionView.allowsMultipleSelection = true
@@ -54,14 +56,18 @@ class ImageSearchViewController: UIViewController {
 }
     
 extension ImageSearchViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        paginatedSearch.result.count
+    }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        results.count
+        paginatedSearch.result[section].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Image", for: indexPath) as! ImageSearchCell
-        cell.setImage(url: results[indexPath.row].previewURL)
+        cell.setImage(url: paginatedSearch.result[indexPath.section][indexPath.row].previewURL)
         cell.contentView.backgroundColor = deselectedColor
         return cell
     }
@@ -77,5 +83,15 @@ extension ImageSearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         updateNextButton()
         collectionView.cellForItem(at: indexPath)?.contentView.backgroundColor = deselectedColor
+    }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard
+            indexPath.section == paginatedSearch.result.indices.last,
+            indexPath.row == paginatedSearch.result[indexPath.section].indices.last,
+            !paginatedSearch.didLoadAllPages,
+            !paginatedSearch.isLoading
+        else { return }
+        paginatedSearch.loadNextPage()
     }
 }

@@ -23,11 +23,14 @@ final class PixabayAPI {
     private let key = "18021445-326cf5bcd3658777a9d22df6f"
     private var currentSearchTask: URLSessionTask?
     
-    func searchImages(_ search: String?, completion: @escaping ([Response.Hit]) -> Void) {
+    func searchImages(_ search: String?, page: Int, completion: @escaping ([Response.Hit]) -> Void) {
         var urlString = base + "?key=" + key
         if let search = search?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
             urlString += "&q=" + search
         }
+        urlString += "&page=\(page)"
+        urlString += "&safesearch=true"
+        print("Fetching \(page) for \(search).")
         guard let url = URL(string: urlString) else {
             completion([])
             return
@@ -40,6 +43,7 @@ final class PixabayAPI {
                 let data = data,
                 let results = try? JSONDecoder().decode(Response.self, from: data)
             else {
+                print("Error")
                 completion([])
                 return
             }
