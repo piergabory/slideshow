@@ -12,13 +12,10 @@ final class ImageSearchCell: UICollectionViewCell {
     @IBOutlet private var imageView: UIImageView!
     
     func setImage(url: URL) {
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard error == nil, let data = data, let image = UIImage(data: data) else {
-                return
-            }
-            DispatchQueue.main.async { [weak self] in
+        ImageFetcher().fetchImage(at: url) { [weak self] image in
+            DispatchQueue.main.async {
                 self?.imageView.image = image
             }
-        }.resume()
+        }
     }
 }
